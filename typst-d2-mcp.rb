@@ -5,7 +5,7 @@
 class TypstD2Mcp < Formula
   desc "MCP server for AI-assisted Typst documentation with D2 diagrams"
   homepage "https://github.com/dlouwers/typst-d2-mcp"
-  version "2.1.0"
+  version "2.1.1"
   license "MIT"
 
   depends_on "d2"
@@ -13,16 +13,16 @@ class TypstD2Mcp < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/dlouwers/typst-d2-mcp/releases/download/v2.1.0/typst-d2-mcp_2.1.0_darwin_amd64.tar.gz"
-      sha256 "729ef5330b02d3a4b1ed34bda33abd5ad7d309f593c85e432f7960329dd2df41"
+      url "https://github.com/dlouwers/typst-d2-mcp/releases/download/v2.1.1/typst-d2-mcp_2.1.1_darwin_amd64.tar.gz"
+      sha256 "a7bc614146e0ff1bfbad0060fac41fb67a9b1b7a2d577a24a0d3844df068b8d2"
 
       define_method(:install) do
         bin.install "typst-d2-mcp"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/dlouwers/typst-d2-mcp/releases/download/v2.1.0/typst-d2-mcp_2.1.0_darwin_arm64.tar.gz"
-      sha256 "84a7d0b226e32ae417de547fee7b56ab2fcc05b1ca551e0067340e40967a0b61"
+      url "https://github.com/dlouwers/typst-d2-mcp/releases/download/v2.1.1/typst-d2-mcp_2.1.1_darwin_arm64.tar.gz"
+      sha256 "e194a4fc173a394ff6356b038efc6c8a45e5fb3761a8f1515f1cd54c03cc9b32"
 
       define_method(:install) do
         bin.install "typst-d2-mcp"
@@ -32,15 +32,15 @@ class TypstD2Mcp < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/dlouwers/typst-d2-mcp/releases/download/v2.1.0/typst-d2-mcp_2.1.0_linux_amd64.tar.gz"
-      sha256 "4e3f1c3be6133105c5d69de177b876e49858c8b288fac47021eb601aec6ec3cc"
+      url "https://github.com/dlouwers/typst-d2-mcp/releases/download/v2.1.1/typst-d2-mcp_2.1.1_linux_amd64.tar.gz"
+      sha256 "7533c470d573c61653900b948bc3f843202e98625976b396af0ed90ffc9efc35"
       define_method(:install) do
         bin.install "typst-d2-mcp"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/dlouwers/typst-d2-mcp/releases/download/v2.1.0/typst-d2-mcp_2.1.0_linux_arm64.tar.gz"
-      sha256 "6a2fc98e76a08d8603f7d6011104ffb4d6501dc66c97a4edde568928f34b7158"
+      url "https://github.com/dlouwers/typst-d2-mcp/releases/download/v2.1.1/typst-d2-mcp_2.1.1_linux_arm64.tar.gz"
+      sha256 "310b03918dd004d8d7644d0422b0dd58ef7c9dc3c1e85efcc6e6bc8bed925102"
       define_method(:install) do
         bin.install "typst-d2-mcp"
       end
@@ -48,6 +48,6 @@ class TypstD2Mcp < Formula
   end
 
   test do
-    system "#{bin}/typst-d2-mcp", "--help"
+    assert_match version.to_s, shell_output("#{bin}/typst-d2-mcp version")
   end
 end
